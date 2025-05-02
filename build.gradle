@@ -13,12 +13,7 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// 注意：在Gradle 8.x中，仓库配置已移至settings.gradle文件中
 
 task clean(type: Delete) {
     delete rootProject.buildDir
