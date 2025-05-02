@@ -5,15 +5,23 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
+        // 降低 Android Gradle Plugin 版本以兼容 Java 8
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
-// 注意：在Gradle 8.x中，仓库配置已移至settings.gradle文件中
+// 为 Gradle 7.x 添加仓库配置
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }  // 添加JitPack仓库支持MPAndroidChart
+    }
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

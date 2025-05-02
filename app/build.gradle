@@ -31,6 +31,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // 确保 kapt 使用与 Kotlin 相同的 JVM 目标版本
+    kapt {
+        javacOptions {
+            option("-source", "1.8")
+            option("-target", "1.8")
+        }
+    }
     buildFeatures {
         viewBinding true
     }

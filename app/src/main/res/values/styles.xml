@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础应用主题 -->
+    <style name="Theme.TimeTracker" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- 主要颜色属性 -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        
+        <!-- 次要颜色属性 -->
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+        
+        <!-- 其他样式属性 -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+    </style>
+    
+    <!-- 工具栏覆盖样式 -->
+    <style name="Theme.TimeTracker.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+    
+    <!-- 弹出菜单覆盖样式 -->
+    <style name="Theme.TimeTracker.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+    </style>
+    
+    <!-- 统计数据文本样式 -->
+    <style name="StatisticTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+</resources>

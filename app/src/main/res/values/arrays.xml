@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 时间范围选项 -->
+    <string-array name="time_range_options">
+        <item>@string/day</item>
+        <item>@string/week</item>
+        <item>@string/month</item>
+        <item>@string/quarter</item>
+        <item>@string/year</item>
+    </string-array>
+</resources>

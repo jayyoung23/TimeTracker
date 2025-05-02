@@ -1,12 +1,5 @@
 include ':app'
 rootProject.name = "TimeTracker"
 
-// 为所有项目添加仓库配置
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }  // 添加JitPack仓库支持MPAndroidChart
-    }
-}
+// Gradle 7.x 不支持 dependencyResolutionManagement
+// 仓库配置已移至 build.gradle 文件
