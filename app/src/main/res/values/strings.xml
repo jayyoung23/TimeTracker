@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">时间追踪器</string>
+
+    <!-- MainActivity -->
+    <string name="add_project">添加项目</string>
+    <string name="start_tracking">开始打卡</string>
+    <string name="stop_tracking">停止打卡</string>
+    <string name="daily_target_label">每日目标:</string>
+    <string name="target_format">%s 分钟</string>
+    <string name="remaining_time_label">今日剩余:</string>
+    <string name="completed_time_label">今日已完成:</string>
+    <string name="time_format_hm">%1$d小时 %2$d分钟</string>
+    <string name="time_format_m">%d分钟</string>
+    <string name="status_ongoing">进行中</string>
+    <string name="status_idle">空闲</string>
+    <string name="error_start_tracking">无法开始打卡: %s</string>
+    <string name="error_stop_tracking">无法停止打卡: %s</string>
+    <string name="tracking_started">打卡已开始</string>
+    <string name="tracking_stopped">打卡已结束</string>
+    <string name="already_tracking">"%s" 正在打卡中</string>
+    <string name="another_project_tracking">另一个项目正在打卡中，请先停止当前打卡</string>
+    <string name="view_details">查看详情</string>
+    <string name="no_projects_yet">还没有项目，点击加号添加一个吧！</string>
+
+    <!-- NewProjectActivity -->
+    <string name="create_new_project">创建新项目</string>
+    <string name="project_name_hint">项目名称</string>
+    <string name="daily_target_hint">每日目标时长 (分钟)</string>
+    <string name="enable_reminders">启用提醒</string>
+    <string name="reminder_time_label">提醒时间:</string>
+    <string name="set_reminder_time">设置提醒时间</string>
+    <string name="save_project">保存项目</string>
+    <string name="error_empty_project_name">项目名称不能为空</string>
+    <string name="error_invalid_target_time">每日目标时长必须是正数</string>
+    <string name="error_saving_project">保存项目失败</string>
+    <string name="project_saved">项目已保存</string>
+
+    <!-- ProjectDetailActivity -->
+    <string name="project_details">项目详情</string>
+    <string name="statistics">统计数据</string>
+    <string name="cumulative_time">累计时长:</string>
+    <string name="total_days">总天数:</string>
+    <string name="average_daily_time">日均时长:</string>
+    <string name="check_in_days">打卡天数:</string>
+    <string name="time_range">时间范围:</string>
+    <string name="day">日</string>
+    <string name="week">周</string>
+    <string name="month">月</string>
+    <string name="quarter">季</string>
+    <string name="year">年</string>
+    <string name="no_data_available">此时间范围内无数据</string>
+    <string name="bar_chart_title">每日打卡时长</string>
+    <string name="pie_chart_title">项目时间占比 (按类型，若有)</string> <!-- 示例 -->
+    <string name="edit_project">编辑项目</string>
+    <string name="delete_project">删除项目</string>
+    <string name="confirm_delete_title">确认删除</string>
+    <string name="confirm_delete_message">确定要删除项目 "%s" 及其所有打卡记录吗？此操作无法撤销。</string>
+    <string name="delete_successful">项目已删除</string>
+    <string name="delete_failed">删除项目失败</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+
+    <!-- TimerActivity -->
+    <string name="daily_target_countdown_label">每日目标剩余时间:</string>
+    <string name="elapsed_time_label">本次已用时间:</string>
+    <string name="error_invalid_project_id">无效的项目ID</string>
+    <string name="error_project_not_found">未找到项目</string>
+    <string name="error_no_ongoing_record">未找到正在进行的打卡记录</string>
+    <string name="daily_target_reached">已达到每日目标！</string>
+    <string name="error_no_ongoing_record_to_stop">没有正在进行的打卡记录可以停止</string>
+
+    <!-- ProjectListAdapter -->
+    <string name="remaining_time_format">剩余: %s</string>
+    <string name="target_achieved">目标达成</string>
+    <string name="loading_time">计算中...</string>
+    <string name="status_tracking">打卡中</string>
+
+    <!-- General -->
+    <string name="loading">加载中...</string>
+    <string name="error_generic">发生错误</string>
+
+</resources>
