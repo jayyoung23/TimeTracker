@@ -3,14 +3,16 @@ package com.example.timetracker.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.timetracker.R // 需要创建strings.xml等资源文件
+import com.example.timetracker.R
 import com.example.timetracker.TimeTrackerApplication
 import com.example.timetracker.data.model.Project
 import com.example.timetracker.databinding.ActivityMainBinding
+import com.example.timetracker.ui.adapter.ProjectListAdapter
 import com.example.timetracker.viewmodel.ProjectViewModel
 import com.example.timetracker.viewmodel.ProjectViewModelFactory
 import java.util.*

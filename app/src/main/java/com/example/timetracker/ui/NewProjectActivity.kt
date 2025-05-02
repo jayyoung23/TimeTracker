@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.timetracker.R // 需要创建资源文件
+import com.example.timetracker.R
 import com.example.timetracker.TimeTrackerApplication
 import com.example.timetracker.databinding.ActivityNewProjectBinding
 import com.example.timetracker.viewmodel.ProjectViewModel
@@ -38,7 +38,7 @@ class NewProjectActivity : AppCompatActivity() {
 
         // 设置ActionBar（如果需要返回按钮）
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.title_new_project)
+        supportActionBar?.title = getString(R.string.create_new_project)
 
         setupListeners()
     }
@@ -117,14 +117,14 @@ class NewProjectActivity : AppCompatActivity() {
 
         // 验证输入
         if (projectName.isEmpty()) {
-            binding.tilProjectName.error = getString(R.string.error_project_name_required)
+            binding.tilProjectName.error = getString(R.string.error_empty_project_name)
             return
         } else {
             binding.tilProjectName.error = null
         }
 
         if (dailyTargetString.isEmpty()) {
-            binding.tilDailyTarget.error = getString(R.string.error_daily_target_required)
+            binding.tilDailyTarget.error = getString(R.string.error_empty_project_name)
             return
         } else {
             binding.tilDailyTarget.error = null
@@ -132,7 +132,7 @@ class NewProjectActivity : AppCompatActivity() {
 
         val dailyTargetMinutes = dailyTargetString.toIntOrNull()
         if (dailyTargetMinutes == null || dailyTargetMinutes <= 0) {
-            binding.tilDailyTarget.error = getString(R.string.error_invalid_daily_target)
+            binding.tilDailyTarget.error = getString(R.string.error_invalid_target_time)
             return
         } else {
             binding.tilDailyTarget.error = null
@@ -142,7 +142,7 @@ class NewProjectActivity : AppCompatActivity() {
         if (reminderEnabled) {
             if (reminderHour == null || reminderMinute == null) {
                 // 如果开启了提醒但没有选择时间
-                Toast.makeText(this, R.string.error_reminder_time_required, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_generic, Toast.LENGTH_SHORT).show()
                 return
             } else {
                 // 将小时和分钟转换为一天中的分钟数
@@ -159,7 +159,7 @@ class NewProjectActivity : AppCompatActivity() {
         )
 
         // 提示保存成功并关闭当前活动
-        Toast.makeText(this, R.string.project_saved_success, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.project_saved), Toast.LENGTH_SHORT).show()
         finish()
     }
 

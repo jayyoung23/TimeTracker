@@ -112,25 +112,25 @@ class ProjectDetailActivity : AppCompatActivity() {
     private fun observeStatistics() {
         // 观察总时长
         projectViewModel.getTotalDuration(projectId).observe(this) { totalSeconds ->
-            binding.tvTotalDuration.text = getString(R.string.total_duration_format,
-                formatDurationHMS(totalSeconds?.toLong() ?: 0L))
+            binding.tvTotalDuration.text = getString(R.string.cumulative_time) + " " +
+                formatDurationHMS(totalSeconds?.toLong() ?: 0L)
         }
 
         // 观察累计天数（基于项目创建时间计算，或直接从记录计算）
         // 这里使用打卡天数作为累计天数的近似值，更精确的计算需要考虑项目创建日期
         projectViewModel.getCheckInDays(projectId).observe(this) { days ->
-             binding.tvTotalDays.text = getString(R.string.total_days_format, days ?: 0)
+             binding.tvTotalDays.text = getString(R.string.total_days) + " " + (days ?: 0)
         }
 
         // 观察日均时长
         projectViewModel.getAverageDailyDuration(projectId).observe(this) { avgMinutes ->
-             binding.tvAvgDailyDuration.text = getString(R.string.avg_daily_duration_format,
-                formatDurationHMS((avgMinutes?.toLong() ?: 0L) * 60))
+             binding.tvAvgDailyDuration.text = getString(R.string.average_daily_time) + " " +
+                formatDurationHMS((avgMinutes?.toLong() ?: 0L) * 60)
         }
 
         // 观察打卡天数
         projectViewModel.getCheckInDays(projectId).observe(this) { checkInDays ->
-            binding.tvCheckInDays.text = getString(R.string.check_in_days_format, checkInDays ?: 0)
+            binding.tvCheckInDays.text = getString(R.string.check_in_days) + " " + (checkInDays ?: 0)
         }
     }
 
@@ -185,7 +185,9 @@ class ProjectDetailActivity : AppCompatActivity() {
      * @param rangeOptionIndex Spinner中选项的索引
      */
     private fun loadChartData(rangeOptionIndex: Int) {
-        val (startDate, endDate, groupByFormat, axisLabels) = getTimeRangeAndFormat(rangeOptionIndex)
+        val result = getTimeRangeAndFormat(rangeOptionIndex)
+        val (startDate, endDate) = result.first
+        val (groupByFormat, axisLabels) = result.second
 
         projectViewModel.getTimeRecordsByDateRange(projectId, startDate, endDate).observe(this) { records ->
             if (records != null) {
@@ -200,7 +202,7 @@ class ProjectDetailActivity : AppCompatActivity() {
      * @param rangeOptionIndex Spinner中选项的索引
      * @return Pair<Date, Date, SimpleDateFormat, List<String>>
      */
-    private fun getTimeRangeAndFormat(rangeOptionIndex: Int): Triple<Date, Date, SimpleDateFormat?, List<String>?> {
+    private fun getTimeRangeAndFormat(rangeOptionIndex: Int): Pair<Pair<Date, Date>, Pair<SimpleDateFormat?, List<String>?>> {
         val cal = Calendar.getInstance()
         var startDate: Date
         var endDate: Date
@@ -270,7 +272,7 @@ class ProjectDetailActivity : AppCompatActivity() {
                 axisLabels = getWeekDayLabels()
             }
         }
-        return Triple(startDate, endDate, groupByFormat, axisLabels)
+        return Pair(Pair(startDate, endDate), Pair(groupByFormat, axisLabels))
     }
 
     // --- X轴标签生成辅助函数 ---
@@ -404,7 +406,7 @@ class ProjectDetailActivity : AppCompatActivity() {
             .sortedByDescending { it.second } // 按时长降序
             .take(5) // 最多显示前5天
             
-        val otherTotal = records.sumOf { it.durationSeconds }.toFloat() - dailyTotals.sumOf { it.second }
+        val otherTotal = records.sumOf { it.durationSeconds }.toFloat() - dailyTotals.sumBy { it.second.toInt() }
         
         val entries = mutableListOf<PieEntry>()
         dailyTotals.forEach {
